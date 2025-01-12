@@ -13,7 +13,7 @@ This library not only sets the overflow to hidden but also sets the position to 
 ```bash
 npm install @kimhongyeon/use-lock-body-scroll
 ```
-또는
+Or
 ```bash
 yarn add @kimhongyeon/use-lock-body-scroll
 ```
