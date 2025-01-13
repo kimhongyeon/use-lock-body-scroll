@@ -43,6 +43,7 @@ export default App;
 ## Options
 useLockBodyScroll hook can take an options object as the second argument.
 - lockDelay (default: 0): The delay before applying the scroll lock (in milliseconds).
+- resetBodyScrollWhenLocking (default: false): Whether to reset the body scroll when locking.
 
 ## Contributing
 Please submit bug reports and feature requests through the [issue tracker](https://github.com/kimhongyeon/use-lock-body-scroll/issues).  
