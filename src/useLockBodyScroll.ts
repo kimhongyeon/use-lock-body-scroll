@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 
 type Options = {
-  /*
-   * The delay to lock the body scroll. Default is 200ms. milliseconds.
+  /**
+   * The delay to unlock the body scroll. Default is 0ms. milliseconds.
    */
   lockDelay?: number;
 };
