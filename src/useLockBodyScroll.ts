@@ -1,15 +1,19 @@
 import { useEffect, useRef } from 'react';
 
 type Options = {
-  /*
-   * The delay to lock the body scroll. Default is 200ms. milliseconds.
+  /**
+   * The delay to unlock the body scroll. Default is 0ms. milliseconds.
    */
   lockDelay?: number;
+  /**
+   * Reset body scroll when locking. Default is false.
+   */
+  resetBodyScrollWhenLocking?: boolean;
 };
 
 const useLockBodyScroll = (
   isLock: boolean,
-  { lockDelay = 0 }: Options = {}
+  { lockDelay = 0, resetBodyScrollWhenLocking = false }: Options = {}
 ) => {
   const lastScrollYRef = useRef(0);
 
@@ -22,7 +26,9 @@ const useLockBodyScroll = (
       document.body.style.removeProperty('overflow');
       document.body.style.removeProperty('position');
       document.body.style.removeProperty('width');
-      document.body.style.removeProperty('top');
+      if (!resetBodyScrollWhenLocking) {
+        document.body.style.removeProperty('top');
+      }
 
       setTimeout(() => {
         window.scrollTo(0, lastScrollYRef.current);
@@ -37,7 +43,9 @@ const useLockBodyScroll = (
       setTimeout(() => {
         document.body.style.position = 'fixed';
         document.body.style.width = '100%';
-        document.body.style.top = `-${lastScrollYRef.current}px`;
+        if (!resetBodyScrollWhenLocking) {
+          document.body.style.top = `-${lastScrollYRef.current}px`;
+        }
       }, lockDelay);
     } else {
       release();
